@@ -1,0 +1,11 @@
+<h1>THIS RESTAURANT</h1>
+
+<%= @restaurant.name %>, <%= @restaurant.category %> cuisine
+<br>
+<%= @restaurant.address %>
+<br>
+📞 <%= @restaurant.phone_number %>
+
+
+<p><%= link_to "🔙", restaurants_path %></p>
+<%= link_to "Write a review", new_restaurant_review_path(@restaurant) %>

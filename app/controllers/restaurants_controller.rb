@@ -1,6 +1,6 @@
 class RestaurantsController < ApplicationController
 
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant, only: [:show]
 
   # GET /articles
   def index
@@ -25,7 +25,7 @@ class RestaurantsController < ApplicationController
     @restaurant = Restaurant.new(restaurant_params)
 
     if @restaurant.save
-      redirect_to @restaurant, notice: 'Restaurant was successfully created.'
+      redirect_to restaurant_path(@restaurant), notice: 'Restaurant was successfully created.'
     else
       render :new
     end
@@ -34,7 +34,7 @@ class RestaurantsController < ApplicationController
   # PATCH/PUT /restaurants/1
   def update
     if @restaurant.update(restaurant_params)
-      redirect_to @restaurant, notice: 'Restaurant was successfully updated.'
+      redirect_to restaurants_path, notice: 'Restaurant was successfully updated.'
     else
       render :edit
     end
@@ -54,7 +54,7 @@ class RestaurantsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def restaurant_params
-      params.require(:restaurant).permit(:title, :content)
+      params.require(:restaurant).permit(:name, :address, :category, :phone_number)
     end
 
 end
